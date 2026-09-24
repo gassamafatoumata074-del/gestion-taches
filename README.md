@@ -1,58 +1,156 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Application web de gestion de tâches
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Présentation
 
-## About Laravel
+Cette application web permet de gérer une liste de tâches. Elle permet notamment de créer, consulter, modifier, terminer et supprimer des tâches.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+L'application a été développée avec **Laravel** et utilise **SQLite** comme système de gestion de base de données.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies utilisées
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* PHP
+* Laravel
+* SQLite
+* Composer
+* PHPUnit
+* Git
+* GitHub
+* HTML / CSS
+* JavaScript
 
-## Learning Laravel
+## Prérequis
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pour installer et exécuter l'application, il est nécessaire de disposer de :
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* PHP
+* Composer
+* SQLite
+* Git
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Installation du projet
 
-## Agentic Development
+### 1. Récupérer le projet
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Cloner le dépôt GitHub :
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/gassamafatoumata074-del/gestion-taches.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Puis accéder au dossier :
 
-## Contributing
+```bash
+cd gestion-taches
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Installer les dépendances
 
-## Code of Conduct
+Installer les dépendances PHP avec Composer :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Configurer l'environnement
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Copier le fichier `.env.example` vers `.env` :
 
-## License
+```bash
+copy .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Puis générer la clé de l'application :
+
+```bash
+php artisan key:generate
+```
+
+Le fichier `.env` contient les paramètres propres à l'environnement d'exécution. Il ne doit pas être envoyé sur GitHub.
+
+### 4. Préparer la base de données
+
+L'application utilise une base de données SQLite.
+
+Les migrations permettent de créer automatiquement les tables nécessaires :
+
+```bash
+php artisan migrate
+```
+
+### 5. Nettoyer le cache
+
+Avant de lancer l'application, il est possible de nettoyer les différents caches Laravel :
+
+```bash
+php artisan optimize:clear
+```
+
+### 6. Lancer l'application
+
+Démarrer le serveur de développement Laravel :
+
+```bash
+php artisan serve
+```
+
+L'application est alors accessible à l'adresse :
+
+```text
+http://127.0.0.1:8000
+```
+
+## Tests
+
+Les tests automatisés peuvent être exécutés avec la commande :
+
+```bash
+php artisan test
+```
+
+La suite de tests vérifie notamment :
+
+* l'accès aux pages de l'application ;
+* la création d'une tâche ;
+* la validation des données ;
+* la modification d'une tâche ;
+* la finalisation d'une tâche ;
+* la suppression d'une tâche ;
+* l'enregistrement des données dans la base SQLite.
+
+## Déploiement
+
+Le projet est versionné avec Git et hébergé sur GitHub.
+
+Les principales étapes de préparation du déploiement sont :
+
+1. Vérification du fonctionnement de l'application ;
+2. Exécution des tests automatisés ;
+3. Initialisation du dépôt Git ;
+4. Création d'un commit ;
+5. Envoi du projet vers GitHub ;
+6. Installation des dépendances avec Composer sur l'environnement cible ;
+7. Configuration du fichier `.env` ;
+8. Préparation de la base de données avec les migrations ;
+9. Nettoyage du cache Laravel ;
+10. Vérification du fonctionnement de l'application.
+
+## Commandes principales
+
+```bash
+composer install
+php artisan key:generate
+php artisan migrate
+php artisan optimize:clear
+php artisan test
+php artisan serve
+```
+
+## Versionnement
+
+Git est utilisé pour suivre les modifications du projet. GitHub permet de centraliser le code source et de conserver les différentes versions de l'application.
+
+## Auteur
+
+**Gassama Fatoumata**
+
+Projet réalisé dans le cadre de la formation en conception et développement d'applications.
